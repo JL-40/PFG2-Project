@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public enum AmmoType
 {
@@ -11,25 +12,39 @@ public enum AmmoType
 
 public abstract class Gun : MonoBehaviour
 {
-    protected int magazineAmmoCount;  // How much ammo is in the gun's magazine.
-    protected int reserveAmmoCount;   // How much ammo the gun has to reload from.
-    protected AmmoType cartridge;     // The type of ammo the gun uses (Single bullet or a pellet of multiple bullets.
-    protected int pelletCount = 0;    // The amount of pellets the gun shoots.
+    public int magazineAmmoCount;  // How much ammo is in the gun's magazine.
+    public int magazineCapacity;     // Maximum bullets in the clip
+    public int reserveAmmoCount;   // How much ammo the gun has to reload from.
+    public AmmoType cartridge;     // The type of ammo the gun uses (Single bullet or a pellet of multiple bullets.
+    public int pelletCount = 0;    // The amount of pellets the gun shoots.
 
-    //
-    protected float damage;   // The damage the gun does.
-    protected float rateOfFire;   // How fast the gun can shoot.
-    protected float range;
-    protected float damageDropOff;    // How much damage is reduced by for a given range.
-    protected float swapSpeed;    // How long it take for a gun to be swapped to.
-    protected float aimDownSightSpeed;    // How long it take to aim down the sight of the gun.
+    // How much damage each shot does, how fast the gun shoots, how fast the burst is, the range, and how much spread the gun has
+    public float damage, rateOfFire, burstRate, range, spread;
+    public int bulletsPerTap;    // How many bullets are shot per mouse click
+    public bool allowSpray;     // Allows he gun to shoot continously as long has the button is pressed
 
-    protected PlayerInput.UseWeaponActions useWeapon;
+    public bool isShooting, readyToShoot, isReloading;   // Status of the gun
+
+    public PlayerInput playerInput;
+    public PlayerInput.UseWeaponActions useWeapon;
+
+    public Transform attackPoint;
+    public RaycastHit rayHit;
+    public LayerMask enemyDetector;
+
+    public TextMeshProUGUI currentAmmoText;
+    public TextMeshProUGUI reserveAmmoText;
 
     // Start is called before the first frame updat
     void Start()
     {
         
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 
     // Deal damage
@@ -41,7 +56,7 @@ public abstract class Gun : MonoBehaviour
     }
 
     // Calculates the damage
-    protected virtual float CalculateDamage(float dmg, float distance = 0)
+    public virtual float CalculateDamage(float dmg, float distance = 0)
     {
         float temp = dmg;
 
@@ -49,8 +64,19 @@ public abstract class Gun : MonoBehaviour
         return temp;
     }
 
-    protected void Shoot()
+    public virtual void Shoot()
     {
         Debug.Log("Shots Fired");
+    }
+
+    public virtual void Reload()
+    {
+        Debug.Log("Reloading");
+    }
+
+
+    public virtual void UpdateAmmo()
+    {
+        Debug.Log($"Current Ammo {magazineAmmoCount} - Current Reserve {reserveAmmoCount}");
     }
 }

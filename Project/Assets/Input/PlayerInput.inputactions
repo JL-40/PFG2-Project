@@ -720,15 +720,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "AimDownSight",
-                    "type": "Button",
-                    "id": "6d8871ab-500e-4759-9299-f9fe007c5a5d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "ReloadGun",
                     "type": "Button",
                     "id": "70d2eb9f-abf5-4fdd-8cd0-35ed964a6b33",
@@ -752,12 +743,12 @@
                 },
                 {
                     "name": "",
-                    "id": "0bcdbc0a-b48a-4b27-a544-1da863a37f34",
-                    "path": "<Mouse>/rightButton",
+                    "id": "e88f51ee-b8a4-4059-a745-2b253c8319e3",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AimDownSight",
+                    "action": "ShootGun",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -765,6 +756,17 @@
                     "name": "",
                     "id": "7ac70d02-3f6f-4585-8cb0-9a6607f230e3",
                     "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReloadGun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d336b04-c3df-47b1-83b3-e5cbee2caa1e",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

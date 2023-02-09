@@ -742,15 +742,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""AimDownSight"",
-                    ""type"": ""Button"",
-                    ""id"": ""6d8871ab-500e-4759-9299-f9fe007c5a5d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""ReloadGun"",
                     ""type"": ""Button"",
                     ""id"": ""70d2eb9f-abf5-4fdd-8cd0-35ed964a6b33"",
@@ -774,12 +765,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0bcdbc0a-b48a-4b27-a544-1da863a37f34"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""id"": ""e88f51ee-b8a4-4059-a745-2b253c8319e3"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AimDownSight"",
+                    ""action"": ""ShootGun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -787,6 +778,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""7ac70d02-3f6f-4585-8cb0-9a6607f230e3"",
                     ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReloadGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d336b04-c3df-47b1-83b3-e5cbee2caa1e"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -819,7 +821,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         // UseWeapon
         m_UseWeapon = asset.FindActionMap("UseWeapon", throwIfNotFound: true);
         m_UseWeapon_ShootGun = m_UseWeapon.FindAction("ShootGun", throwIfNotFound: true);
-        m_UseWeapon_AimDownSight = m_UseWeapon.FindAction("AimDownSight", throwIfNotFound: true);
         m_UseWeapon_ReloadGun = m_UseWeapon.FindAction("ReloadGun", throwIfNotFound: true);
     }
 
@@ -1035,14 +1036,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UseWeapon;
     private IUseWeaponActions m_UseWeaponActionsCallbackInterface;
     private readonly InputAction m_UseWeapon_ShootGun;
-    private readonly InputAction m_UseWeapon_AimDownSight;
     private readonly InputAction m_UseWeapon_ReloadGun;
     public struct UseWeaponActions
     {
         private @PlayerInput m_Wrapper;
         public UseWeaponActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @ShootGun => m_Wrapper.m_UseWeapon_ShootGun;
-        public InputAction @AimDownSight => m_Wrapper.m_UseWeapon_AimDownSight;
         public InputAction @ReloadGun => m_Wrapper.m_UseWeapon_ReloadGun;
         public InputActionMap Get() { return m_Wrapper.m_UseWeapon; }
         public void Enable() { Get().Enable(); }
@@ -1056,9 +1055,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ShootGun.started -= m_Wrapper.m_UseWeaponActionsCallbackInterface.OnShootGun;
                 @ShootGun.performed -= m_Wrapper.m_UseWeaponActionsCallbackInterface.OnShootGun;
                 @ShootGun.canceled -= m_Wrapper.m_UseWeaponActionsCallbackInterface.OnShootGun;
-                @AimDownSight.started -= m_Wrapper.m_UseWeaponActionsCallbackInterface.OnAimDownSight;
-                @AimDownSight.performed -= m_Wrapper.m_UseWeaponActionsCallbackInterface.OnAimDownSight;
-                @AimDownSight.canceled -= m_Wrapper.m_UseWeaponActionsCallbackInterface.OnAimDownSight;
                 @ReloadGun.started -= m_Wrapper.m_UseWeaponActionsCallbackInterface.OnReloadGun;
                 @ReloadGun.performed -= m_Wrapper.m_UseWeaponActionsCallbackInterface.OnReloadGun;
                 @ReloadGun.canceled -= m_Wrapper.m_UseWeaponActionsCallbackInterface.OnReloadGun;
@@ -1069,9 +1065,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ShootGun.started += instance.OnShootGun;
                 @ShootGun.performed += instance.OnShootGun;
                 @ShootGun.canceled += instance.OnShootGun;
-                @AimDownSight.started += instance.OnAimDownSight;
-                @AimDownSight.performed += instance.OnAimDownSight;
-                @AimDownSight.canceled += instance.OnAimDownSight;
                 @ReloadGun.started += instance.OnReloadGun;
                 @ReloadGun.performed += instance.OnReloadGun;
                 @ReloadGun.canceled += instance.OnReloadGun;
@@ -1101,7 +1094,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     public interface IUseWeaponActions
     {
         void OnShootGun(InputAction.CallbackContext context);
-        void OnAimDownSight(InputAction.CallbackContext context);
         void OnReloadGun(InputAction.CallbackContext context);
     }
 }
