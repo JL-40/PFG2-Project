@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4035219142733080}
   - component: {fileID: 33699190840813150}
   - component: {fileID: 23280471604157296}
+  - component: {fileID: 7150095193560315192}
   m_Layer: 0
   m_Name: M4_8
   m_TagString: Untagged
@@ -88,6 +89,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7150095193560315192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117582899397640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ecafcda067d5243ab2e92e9a0f9e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magazineAmmoCount: 30
+  magazineCapacity: 30
+  reserveAmmoCount: 150
+  cartridge: 0
+  pelletCount: 0
+  damage: 33
+  rateOfFire: 5
+  burstRate: 0
+  range: 0
+  spread: 0
+  bulletsPerTap: 0
+  allowSpray: 1
+  isShooting: 0
+  readyToShoot: 1
+  isReloading: 0
+  attackPoint: {fileID: 0}
+  enemyDetector:
+    serializedVersion: 2
+    m_Bits: 0
+  currentAmmoText: {fileID: 0}
+  reserveAmmoText: {fileID: 0}
 --- !u!1 &1426050648627750
 GameObject:
   m_ObjectHideFlags: 0

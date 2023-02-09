@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 4519716788627816}
   - component: {fileID: 33705837635148522}
   - component: {fileID: 23860282398207496}
+  - component: {fileID: 1049163284845846089}
   m_Layer: 0
   m_Name: AK74
   m_TagString: Untagged
@@ -252,6 +253,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1049163284845846089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487774384131766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ecafcda067d5243ab2e92e9a0f9e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magazineAmmoCount: 30
+  magazineCapacity: 30
+  reserveAmmoCount: 150
+  cartridge: 0
+  pelletCount: 0
+  damage: 33
+  rateOfFire: 5
+  burstRate: 0
+  range: 0
+  spread: 0
+  bulletsPerTap: 0
+  allowSpray: 1
+  isShooting: 0
+  readyToShoot: 1
+  isReloading: 0
+  attackPoint: {fileID: 0}
+  enemyDetector:
+    serializedVersion: 2
+    m_Bits: 8
+  currentAmmoText: {fileID: 0}
+  reserveAmmoText: {fileID: 0}
 --- !u!1 &1927369336514790
 GameObject:
   m_ObjectHideFlags: 0
