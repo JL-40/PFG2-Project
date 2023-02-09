@@ -48,11 +48,11 @@ public abstract class Gun : MonoBehaviour
     }
 
     // Deal damage
-    public virtual float DealDamage()
+    public virtual float DealDamage(float dmg)
     {
-        float dmg = CalculateDamage(damage);
+        float dmgOut = CalculateDamage(dmg);
 
-        return dmg;
+        return dmgOut;
     }
 
     // Calculates the damage
@@ -74,9 +74,19 @@ public abstract class Gun : MonoBehaviour
         Debug.Log("Reloading");
     }
 
-
     public virtual void UpdateAmmo()
     {
         Debug.Log($"Current Ammo {magazineAmmoCount} - Current Reserve {reserveAmmoCount}");
+    }
+
+    public virtual void HitEnemy(float rng, float dmg)
+    {
+        if (Physics.Raycast(attackPoint.position, attackPoint.forward, out rayHit, rng, enemyDetector))
+        {
+            if (rayHit.collider.CompareTag("Enemy"))
+            {
+                rayHit.collider.GetComponent<Enemy>().DisplayDamage(dmg);
+            }
+        }
     }
 }

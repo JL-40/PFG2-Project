@@ -14,6 +14,7 @@ public class AssaultRifle : Gun
 
         damage = 33f;
         rateOfFire = 5f;
+        range = 100f;
 
         allowSpray = true;
 
@@ -53,6 +54,8 @@ public class AssaultRifle : Gun
         }
 
         UpdateAmmo();
+
+       base.HitEnemy(range, damage);
     }
 
     public override void Reload()
