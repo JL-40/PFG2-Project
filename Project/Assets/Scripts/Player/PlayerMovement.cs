@@ -7,6 +7,7 @@
 using Microsoft.Win32.SafeHandles;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -19,7 +20,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float playerSpeed;
     public float gravityScale = -9.8f;
-    public float jumpForce; 
+    public float jumpForce;
+
+    static Vector3 playerLoc;
 
 
     // Start is called before the first frame update
@@ -32,7 +35,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdatePlayerLocation();
+
         isGrounded = controller.isGrounded;
+    }
+
+    void UpdatePlayerLocation()
+    {
+        playerLoc = gameObject.transform.position;
+    }
+
+    public static Vector3 GetPlayerLocation()
+    {
+        return playerLoc;
     }
 
     public void ProcessMovement(Vector2 input)

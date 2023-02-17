@@ -6,6 +6,8 @@ public class Dummy : Enemy
 {
     public float respawnTimer;
 
+    float chatTimer = 0f;
+
     public Dummy() 
     {
         health = 100;
@@ -22,6 +24,12 @@ public class Dummy : Enemy
     // Update is called once per frame
     void Update()
     {
+        if (chatTimer == 5f)
+        {
+            Debug.Log($"Player is at: {PlayerMovement.GetPlayerLocation()}");
+            chatTimer = 0f;
+        }
 
+        chatTimer += Time.deltaTime;
     }
 }
