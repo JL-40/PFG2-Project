@@ -35,6 +35,11 @@ public abstract class Gun : MonoBehaviour
     public TextMeshProUGUI currentAmmoText;
     public TextMeshProUGUI reserveAmmoText;
 
+    
+    public GameObject bulletPrefab;
+    public Transform bulletSpawner;
+    public ParticleSystem muzzleFlash;
+
     // Start is called before the first frame updat
     void Start()
     {
@@ -44,7 +49,7 @@ public abstract class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.rotation = Quaternion.Euler(-attackPoint.rotation.eulerAngles.x, attackPoint.rotation.eulerAngles.y + 180f, -attackPoint.rotation.eulerAngles.z);
     }
 
     // Deal damage
@@ -67,6 +72,14 @@ public abstract class Gun : MonoBehaviour
     public virtual void Shoot()
     {
         Debug.Log("Shots Fired");
+    }
+
+    public virtual void ShootBullet()
+    {
+        muzzleFlash.Play();     // Play Muzzle Flash
+
+        GameObject newBullet = Instantiate(bulletPrefab, bulletSpawner.position, bulletSpawner.rotation);
+        newBullet.GetComponent<Bullet>().SetDirection(attackPoint.transform.forward);
     }
 
     public virtual void Reload()

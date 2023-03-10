@@ -756,7 +756,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""37aba425-da3c-485d-9d5b-f8eaff2838bb"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=0.1,pressPoint=0.2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ShootGun"",

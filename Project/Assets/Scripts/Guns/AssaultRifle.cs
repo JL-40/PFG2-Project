@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -50,12 +51,36 @@ public class AssaultRifle : Gun
     {
         if (magazineAmmoCount > 0)
         {
-            magazineAmmoCount--;
+            StartCoroutine(FireGun());
         }
+    }
 
-        UpdateAmmo();
+    IEnumerator FireGun()
+    {
+        do
+        {
+            base.ShootBullet();
 
-       base.HitEnemy(range, damage);
+            if (magazineAmmoCount > 0)
+            {
+                magazineAmmoCount--;
+            }
+            else
+            {
+                magazineAmmoCount = 0;
+            }
+
+            UpdateAmmo();
+
+            if (magazineAmmoCount == 0)
+            {
+                isShooting = false;
+            }
+
+            base.HitEnemy(range, damage);
+
+            yield return new WaitForSeconds(1 / rateOfFire);
+        } while (useWeapon.ShootGun.ReadValue<float>() > 0 && allowSpray);
     }
 
     public override void Reload()

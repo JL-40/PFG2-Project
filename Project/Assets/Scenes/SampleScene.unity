@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4519716788627816, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4519716788627816, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_LocalRotation.x
@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4519716788627816, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4519716788627816, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_LocalRotation.z
@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4519716788627816, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4519716788627816, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -277,9 +277,25 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1049163284845846089, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
+      propertyPath: playerView
+      value: 
+      objectReference: {fileID: 2102479643}
+    - target: {fileID: 1049163284845846089, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: attackPoint
       value: 
       objectReference: {fileID: 2102479645}
+    - target: {fileID: 1049163284845846089, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 107411248}
+    - target: {fileID: 1049163284845846089, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7343799969852506414, guid: c34cf28558c707b47b968fd1ef99e618, type: 3}
+    - target: {fileID: 1049163284845846089, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
+      propertyPath: bulletSpawner
+      value: 
+      objectReference: {fileID: 107411250}
     - target: {fileID: 1049163284845846089, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: currentAmmoText
       value: 
@@ -290,6 +306,16 @@ PrefabInstance:
       objectReference: {fileID: 530633712}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
+--- !u!198 &107411248 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3809685446467688806, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
+  m_PrefabInstance: {fileID: 107411247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &107411250 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1778251937797179430, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
+  m_PrefabInstance: {fileID: 107411247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &241761335
 GameObject:
   m_ObjectHideFlags: 0
