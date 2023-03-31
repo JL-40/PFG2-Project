@@ -6,6 +6,7 @@ using System.IO;
 public class SaveManager : MonoBehaviour
 {
     string path;
+    byte[] keys = new byte[] {0x42, 0x69, 0x15, 0x12 };
 
     void Start()
     {
@@ -15,7 +16,15 @@ public class SaveManager : MonoBehaviour
     public void SaveData(PlayerData data)
     {
         string json = JsonUtility.ToJson(data);
-        File.WriteAllText(path + "/player.json", json);
+
+        byte[] plainTxt = System.Text.Encoding.UTF8.GetBytes(json);
+        byte[] XORTxt = new byte[plainTxt.Length];
+
+        for (int i = 0; i < plainTxt.Length; i++)
+        {
+            XORTxt[i] = (byte)(plainTxt[i] ^ keys[i%keys.Length]);
+        }
+        File.WriteAllBytes(path + "/player.json", XORTxt);
     }
 
     public PlayerData LoadData()
@@ -24,7 +33,18 @@ public class SaveManager : MonoBehaviour
 
         if (File.Exists(filepath))
         {
-            string json = File.ReadAllText(filepath);
+            byte[] rawRead = File.ReadAllBytes(filepath);
+            byte[] decodeTxt = new byte[rawRead.Length];
+
+            for (int i = 0; i < rawRead.Length; i++)
+            {
+                decodeTxt[i] = (byte)(rawRead[i] ^ keys[i%keys.Length]);
+            }
+
+            string json = System.Text.Encoding.UTF8.GetString(decodeTxt);
+
+            Debug.Log(json);
+
             return JsonUtility.FromJson<PlayerData>(json);
         }
         else
