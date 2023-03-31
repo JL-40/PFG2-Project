@@ -61,4 +61,9 @@ public class PlayerHealth : MonoBehaviour
 
     // Get health of the player
     public float GetHealth() { return hp; }
+
+    public void SetHealth(float health)
+    {
+        hp = health;
+    }
 }
